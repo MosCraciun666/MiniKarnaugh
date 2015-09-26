@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/helplinearlayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<TextView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textColor="#000000"
+    android:text="Minimize from formula: enter a formula in the text field, then press Minimize From Formula.\n
+    - No more than 8 variables are allowed.\n
+    - Variable names start with a letter. Afterwards, they can contain letters and digits. Examples: a, a1, in2.\n
+    - Parantheses are allowed.\n
+    - Operators have two names: symbols or words. For example, + is the same as OR. \n
+    - After minimizing from a formula, you can see the truth table or Karnaugh map according to the function in the text field. You can edit it afterwards.\n
+    - Examples:\n
+      - a + b * ( c + d. )\n
+      - a1 and b2 or ( var1. and var2 )\n
+    - Operators are:\n
+      + OR\n
+      * AND \n
+      . NOT\n
+      +. NOR\n
+      *. NAND\n
+      # XOR\n
+      #. BIC (Coincidence)\n
+    "
+    />
+
+    </ScrollView>
+</LinearLayout>
+        

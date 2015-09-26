@@ -1,0 +1,21 @@
+# view AndroidManifest.xml #generated:36
+-keep class com.google.ads.AdActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:15
+-keep class com.purplebrain.adbuddiz.sdk.AdBuddizActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class serban.stoenescu2.Circuit { <init>(...); }
+
+# view AndroidManifest.xml #generated:17
+-keep class serban.stoenescu2.DigitalLogic { <init>(...); }
+
+# view AndroidManifest.xml #generated:25
+-keep class serban.stoenescu2.FacebookActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:32
+-keep class serban.stoenescu2.HelpActivity { <init>(...); }
+
+# onClick res/layout/main.xml #generated:43
+-keepclassmembers class * { *** onCheckboxClicked(...); }
+
