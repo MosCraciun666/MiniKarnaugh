@@ -29,8 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import atomi.Atom;
 import atomi.ConsecutiveOperatorsException;
+
+import com.apptracker.android.track.AppTracker;
 import com.google.analytics.tracking.android.EasyTracker;
-import com.purplebrain.adbuddiz.sdk.AdBuddiz;
+
 import exceptii.ExceededLengthException;
 import exceptii.IllegalEndException;
 import exceptii.IllegalStartException;
@@ -38,15 +40,19 @@ import exceptii.InvalidCharacterException;
 import exceptii.InvalidParanthesesException;
 import exceptii.NoExpressionException;
 import exceptii.TooManyVariablesException;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.Vector;
+
 import minimizerInterface.MinimizerInterface;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
 import serban.stoenescu2.R;
 
 /**
@@ -315,6 +321,12 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
     EasyTracker.getInstance().activityStop(this); // Add this method.
   }
 
+  @Override
+  public void onResume()
+  {
+	  super.onResume();
+	  AppTracker.loadModule(getApplicationContext(),"inapp");
+  }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -323,7 +335,14 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
         try
         {
         setContentView(R.layout.main);//sa mori tu?
-               
+        
+     // Initialize Leadbolt SDK with your api key
+        AppTracker.startSession(getApplicationContext(),"7DJ1Now3ZqPxqvWyCFialZqlqoVbm1Qf");
+        // cache Leadbolt Ad without showing it
+        AppTracker.loadModuleToCache(getApplicationContext(),"inapp");
+        
+       
+        
         ceIsus=this;
         final DigitalLogic upperthis=this;
 
@@ -362,7 +381,7 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
         spinner.setOnItemSelectedListener((OnItemSelectedListener) this);
 
         numberOfVariablesTextView=(TextView)findViewById(R.id.numberofvariables);
-        numberOfVariablesTextView.setText( "Number of variables: "+numberOfVariables);
+        numberOfVariablesTextView.setText("Number of variables: "+numberOfVariables);
 
         minimizeFromFormulaButton=(Button)findViewById(R.id.minimizeformula);
         minimizeFromMapButton=(Button)findViewById(R.id.minimizemaptable);
@@ -559,13 +578,7 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
             announcementTask.execute(this);
             //-web page text download
 
-            //+adbuddiz
-            System.out.println("\n\n\nBa boule, ar trebui sa fiu la AdBuddiz 1\n\n\n");
-            AdBuddiz.cacheAds(this); // this = current Activity
-            System.out.println("\n\n\nBa boule, ar trebui sa fiu la AdBuddiz 2\n\n\n");
-            AdBuddiz.showAd(this); // this = current Activity
-            System.out.println("\n\n\nBa boule, ar trebui sa fiu la AdBuddiz 3\n\n\n");
-            //-adbuddiz
+            
         }
         catch(Exception e)
         {
@@ -577,6 +590,7 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
             setContentView(tv);
         }
 
+		AppTracker.loadModule(getApplicationContext(),"inapp");
       
     }
 
@@ -614,6 +628,7 @@ public class DigitalLogic extends Activity implements OnItemSelectedListener
                         sv.removeAllViews();
                         sv.addView(tl);
                     }
+
     }
 
     public void onCheckboxClicked(View view)
